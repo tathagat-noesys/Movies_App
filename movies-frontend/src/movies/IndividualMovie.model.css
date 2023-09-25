@@ -1,0 +1,27 @@
+.main {
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#main {
+  margin-right: 2%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#main > p {
+  height: 44px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#main > a > img {
+  width: 225px;
+  height: 300px;
+}
+
+#main a {
+  text-decoration: none;
+}
