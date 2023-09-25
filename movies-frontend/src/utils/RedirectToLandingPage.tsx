@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
+import css from "./RedirectToLandingPage.module.css";
 const RedirectToLandingPage = () => {
   const [time, setTime] = useState<number>(5);
 
@@ -20,11 +20,13 @@ const RedirectToLandingPage = () => {
   }
 
   return (
-    <>
-      <h3>Page not found : 404 </h3>
-      <p>Redirecting to main page in : {time}</p>
-      <NavLink to={"/"}> Home </NavLink>
-    </>
+    <div>
+      <div className={css["img-container"]}>
+        <img src="https://blog.eduonix.com/wp-content/uploads/2015/02/404-Error.jpg"></img>
+        <h2>Let's go back to main page in : {time} seconds</h2>
+        <NavLink to={"/"}> Home </NavLink>
+      </div>
+    </div>
   );
 };
 
