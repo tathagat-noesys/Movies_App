@@ -1,17 +1,15 @@
 import ActorForm from "./ActorForm";
-import * as Yup from "yup";
+
 const CreateActors = () => {
   return (
     <>
       <h3>Create Actors</h3>
       <ActorForm
-        model={{ name: "Tom Holland", DateOfBirth: "1996-06-01T:00:00" }}
+        model={{
+          name: "Tom Holland",
+          DateOfBirth: new Date("1995-01-22T13:06:58.838Z"),
+        }}
         onSubmit={(values) => console.log(values)}
-        validationSchema={Yup.object({
-          name: Yup.string()
-            .required("this is required")
-            .FirstLetterUppercase(),
-        })}
       />
     </>
   );

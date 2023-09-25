@@ -3,9 +3,19 @@ import { actorsCreationDTO } from "./actorsmodel";
 import TextField from "../forms/TextField";
 import Button from "../utils/Button";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
+
 export default function ActorForm(props: ActorFormProps) {
   return (
-    <Formik initialValues={props.model} onSubmit={props.onSubmit}>
+    <Formik
+      initialValues={props.model}
+      onSubmit={props.onSubmit}
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .required("* This field is required")
+          .FirstLetterUppercase(),
+      })}
+    >
       {(formikProps) => (
         <Form>
           <TextField field="name" />
