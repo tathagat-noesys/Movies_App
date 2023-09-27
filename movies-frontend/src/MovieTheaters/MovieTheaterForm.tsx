@@ -24,7 +24,7 @@ const MovieTheaterForm = (props: MovieTheaterProps) => {
     <Formik
       initialValues={props.model}
       onSubmit={props.onSubmit}
-      validationScheme={Yup.object({
+      validationSchema={Yup.object({
         name: Yup.string()
           .required("This field is required")
           .FirstLetterUppercase(),

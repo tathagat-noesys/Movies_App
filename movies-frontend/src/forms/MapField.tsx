@@ -4,7 +4,7 @@ import { coordinatesDTO } from "../utils/coordinates.model";
 
 const MapField = (props: mapFieldProps) => {
   const { values } = useFormikContext<any>();
-  const handleMapClick = (coordinates: coordinatesDTO[]) => {
+  const handleMapClick = (coordinates: coordinatesDTO) => {
     values[props.latField] = coordinates.lat;
     values[props.lngField] = coordinates.lng;
   };
