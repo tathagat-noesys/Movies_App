@@ -1,8 +1,26 @@
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvent, Marker } from "react-leaflet";
 import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { coordinatesDTO } from "./coordinates.model";
+import { useState } from "react";
+
+interface mapClickProps {
+  setCoordinates(coordinates: coordinatesDTO): void;
+}
+
+const MapClick = (props: mapClickProps): null => {
+  useMapEvent("click", (eventArgs) => {
+    console.log(eventArgs.latlng.lat, eventArgs.latlng.lng);
+    props.setCoordinates({
+      lat: eventArgs.latlng.lat,
+      lng: eventArgs.latlng.lng,
+    });
+  });
+
+  return null;
+};
 
 let defaultIcon = L.icon({
   iconUrl: icon,
@@ -12,13 +30,10 @@ let defaultIcon = L.icon({
 L.Marker.prototype.options.icon = defaultIcon;
 //12.977790, 77.564936
 
-interface mapClickProps {}
-
-const MapClick = (props: mapClickProps): null => {
-  return null;
-};
-
 const Map = (props: mapProps) => {
+  const [coordinatesState, setCoordinatesState] = useState<coordinatesDTO[]>(
+    props.coordinates
+  );
   return (
     <>
       <MapContainer
@@ -31,6 +46,18 @@ const Map = (props: mapProps) => {
           attribution="React Movies"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <MapClick
+          setCoordinates={(coordinates) => {
+            setCoordinatesState([coordinates]);
+            props.handleMapClick(coordinates);
+          }}
+        />
+        {coordinatesState.map((points) => (
+          <Marker
+            key={`${points.lat} + ${points.lng}`}
+            position={[points.lat, points.lng]}
+          />
+        ))}
       </MapContainer>
     </>
   );
@@ -40,6 +67,8 @@ export default Map;
 
 interface mapProps {
   height: string;
+  coordinates: coordinatesDTO[];
+  handleMapClick(coordinates: coordinatesDTO): void;
 }
 Map.defaultProps = {
   height: "300px",
