@@ -1,4 +1,4 @@
 export interface actorsCreationDTO {
   name: string;
-  DateOfBirth: Date | undefined;
+  DateOfBirth?: Date | undefined;
 }

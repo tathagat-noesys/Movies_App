@@ -39,6 +39,12 @@ const LandingPage = () => {
             poster:
               "https://upload.wikimedia.org/wikipedia/en/1/10/Venom_%282018_film%29_poster.png",
           },
+          {
+            id: 6,
+            title: "Interseller",
+            poster:
+              "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+          },
         ],
         upcompingReleases: [
           {

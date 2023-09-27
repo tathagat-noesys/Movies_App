@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import css from "./RedirectToLandingPage.module.css";
+import Button from "./Button";
 const RedirectToLandingPage = () => {
   const [time, setTime] = useState<number>(5);
 
@@ -23,8 +24,10 @@ const RedirectToLandingPage = () => {
     <div>
       <div className={css["img-container"]}>
         <img src="https://blog.eduonix.com/wp-content/uploads/2015/02/404-Error.jpg"></img>
-        <h2>Let's go back to main page in : {time} seconds</h2>
-        <NavLink to={"/"}> Home </NavLink>
+        <h2>Automatically redirecting to home in : {time} seconds</h2>
+        <NavLink to={"/"}>
+          <Button className="btn btn-outline-dark"> Go to Home</Button>
+        </NavLink>
       </div>
     </div>
   );
