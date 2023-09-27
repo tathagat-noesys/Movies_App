@@ -1,12 +1,15 @@
 import { Formik, Form, FormikHelpers } from "formik";
 import { actorsCreationDTO } from "./actorsmodel";
-import TextField from "../forms/TextField";
-import Button from "../utils/Button";
 import { Link } from "react-router-dom";
-import DateField from "./../forms/DateField";
 import * as Yup from "yup";
+import TextField from "../forms/TextField";
+import DateField from "./../forms/DateField";
+import ImageField from "../forms/ImageField";
+import Button from "../utils/Button";
+
 //css
 import css from "./ActorForm.module.css";
+import MarkdownField from "./../forms/MarkdownField";
 
 export default function ActorForm(props: ActorFormProps) {
   return (
@@ -24,6 +27,12 @@ export default function ActorForm(props: ActorFormProps) {
         <Form className={css.form}>
           <TextField field="name" />
           <DateField displayName="Date Of Birth" field="DateOfBirth" />
+          <ImageField
+            displayName="Actor Image"
+            field={"image"}
+            imageUrl={props.model.imageUrl}
+          />
+          <MarkdownField displayName="Biography" field={"biography"} />
           <Button type="submit" disabled={formikProps.isSubmitting}>
             Save Changes
           </Button>
