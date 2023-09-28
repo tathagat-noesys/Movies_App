@@ -53,7 +53,7 @@ const MovieForm = (props: movieFormProps) => {
           values.movieTheaterIds = selectedMovieTheaterState.map(
             (el) => el.key
           );
-
+          values.actors = SelectedActorsState;
           props.onSubmit(values, actions);
         }}
         validationSchema={Yup.object({
