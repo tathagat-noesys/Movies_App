@@ -14,6 +14,8 @@ import MultipleSelector, {
 import css from "./MutlipleForm.module.css";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../MovieTheaters/movietheater.model";
+import TypeAheadActors from "./../forms/TypeAheadActors";
+
 const MovieForm = (props: movieFormProps) => {
   const MapToModel = (
     item: { id: number; name: string }[]
@@ -83,6 +85,8 @@ const MovieForm = (props: movieFormProps) => {
                 setNonSelectedMovieTheaterState(nonSelected);
               }}
             />
+
+            <TypeAheadActors displayName="Actors" actors={[]} />
             <Button
               className={`btn btn-primary ${css.ButtonSaveExit}`}
               disabled={formikProps.isSubmitting}
