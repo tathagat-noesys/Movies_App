@@ -17,4 +17,6 @@ export interface movieCreationDTO {
   releaseDate?: Date;
   poster?: File;
   posterUrl?: string;
+  genresIds?: number[];
+  movieTheaterIds?: number[];
 }
