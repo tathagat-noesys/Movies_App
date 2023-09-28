@@ -15,6 +15,7 @@ import css from "./MutlipleForm.module.css";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../MovieTheaters/movietheater.model";
 import TypeAheadActors from "./../forms/TypeAheadActors";
+import { actorMovieDTO } from "../actors/actorsmodel";
 
 const MovieForm = (props: movieFormProps) => {
   const MapToModel = (
@@ -39,6 +40,10 @@ const MovieForm = (props: movieFormProps) => {
 
   const [nonSelectedMovieTheaterState, setNonSelectedMovieTheaterState] =
     useState(MapToModel(props.nonSelectedMovieTheater));
+
+  const [SelectedActorsState, setSelectedActorsState] = useState(
+    props.SelectedActorsState
+  );
   return (
     <>
       <Formik
@@ -48,6 +53,7 @@ const MovieForm = (props: movieFormProps) => {
           values.movieTheaterIds = selectedMovieTheaterState.map(
             (el) => el.key
           );
+
           props.onSubmit(values, actions);
         }}
         validationSchema={Yup.object({
@@ -86,7 +92,37 @@ const MovieForm = (props: movieFormProps) => {
               }}
             />
 
-            <TypeAheadActors displayName="Actors" actors={[]} />
+            <TypeAheadActors
+              displayName="Actors"
+              actors={SelectedActorsState}
+              onAdd={(actors) => {
+                console.log(actors);
+                setSelectedActorsState(actors);
+              }}
+              onRemove={(actor) => {
+                setSelectedActorsState(actor);
+              }}
+              listUI={(actor: actorMovieDTO) => (
+                <>
+                  {actor.name} /{" "}
+                  <input
+                    placeholder="Character"
+                    type="text"
+                    value={actor.character}
+                    onChange={(e) => {
+                      const index = SelectedActorsState.findIndex(
+                        (x) => x.id === actor.id
+                      );
+
+                      const actors = [...SelectedActorsState];
+                      actors[index].character = e.currentTarget.value;
+
+                      setSelectedActorsState(actors);
+                    }}
+                  />
+                </>
+              )}
+            />
             <Button
               className={`btn btn-primary ${css.ButtonSaveExit}`}
               disabled={formikProps.isSubmitting}
@@ -119,4 +155,5 @@ interface movieFormProps {
   nonSelectedGenresState: genreDTO[];
   selectedMovieTheater: movieTheaterDTO[];
   nonSelectedMovieTheater: movieTheaterDTO[];
+  SelectedActorsState: actorMovieDTO[];
 }

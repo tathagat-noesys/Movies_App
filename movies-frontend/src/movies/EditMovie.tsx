@@ -28,6 +28,7 @@ const EditMovie = () => {
         selectedGenresState={selectedGenres}
         nonSelectedMovieTheater={nonSelectedMovieTheater}
         selectedMovieTheater={selectedMovieTheaters}
+        SelectedActorsState={[]}
       />
     </>
   );

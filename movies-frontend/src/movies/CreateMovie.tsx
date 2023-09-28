@@ -26,6 +26,7 @@ const CreateMovie = () => {
         selectedGenresState={[]}
         nonSelectedMovieTheater={nonSelectedMovieTheater}
         selectedMovieTheater={[]}
+        SelectedActorsState={[]}
       />
     </>
   );
