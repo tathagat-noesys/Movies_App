@@ -30,3 +30,10 @@ C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\obj\Debug\net6.0\r
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\obj\Debug\net6.0\MoviesAPI.pdb
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\obj\Debug\net6.0\MoviesAPI.genruntimeconfig.cache
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\obj\Debug\net6.0\ref\MoviesAPI.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
