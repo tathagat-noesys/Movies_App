@@ -1,4 +1,4 @@
-using MoviesAPI.Services;
+
 using MoviesAPI.Entities;
 using Microsoft.Extensions.Logging;
 using System.IO;
@@ -16,8 +16,7 @@ builder.Services.AddControllers((options)=>options.Filters.Add(typeof (MyExcepti
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
-builder.Services.AddSingleton<IRepository, InMemoryRepository>();
-builder.Services.AddTransient<MyActionFilter>();
+
 builder.Services.AddLogging(builder =>
 {
     builder.AddConsole();
@@ -26,24 +25,7 @@ var app = builder.Build();
 builder.Services.AddResponseCaching();
 // Configure the HTTP request pipeline.
 
-app.Use(async (context, next) => {
 
-    using (var swapStream = new MemoryStream()) {
-        var originalResponseBody = context.Response.Body;
-        context.Response.Body = swapStream;
-        await next.Invoke();
-
-
-        swapStream.Seek(0, SeekOrigin.Begin);
-        string responseBody = new StreamReader(swapStream).ReadToEnd();
-        swapStream.Seek(0, SeekOrigin.Begin);
-
-        await swapStream.CopyToAsync(originalResponseBody);
-        context.Response.Body = originalResponseBody;
-         var logger = app.Services.GetRequiredService<ILogger<Program>>();
-        logger.LogInformation($"Response Body: {responseBody}");
-    }
-});
 
 
 if (app.Environment.IsDevelopment())
