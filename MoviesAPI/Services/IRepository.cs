@@ -9,7 +9,7 @@ namespace MoviesAPI.Services
 {
     public interface IRepository
     {
-        List<Genre> GetAllGenres();
+        Task<List<Genre>> GetAllGenres();
         Genre GetGenreById(int Id);
     }
 }
