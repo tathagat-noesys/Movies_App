@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
-import { genreDTO } from "./genres.model";
+import { genreCreationDTO, genreDTO } from "./genres.model";
 import { URLgenres } from "../Endpoints";
 import GenericList from "../utils/GenericListComponen";
 import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
 import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
+import DisplayErrors from "../utils/DisplayError";
 
 const IndexGenres = () => {
   const [genres, setGenres] = useState<genreDTO[]>([]);
   const [totalAmountOfPages, setTotalAmountOfPages] = useState<number>(0);
   const [recordsPerPage, setRecordsPerPage] = useState<number>(5);
   const [page, setPage] = useState<number>(1);
-
+  const [errors, setErrors] = useState<string[]>([]);
   useEffect(() => {
+    loadData();
+  }, [page, recordsPerPage]);
+
+  function loadData(): void {
     console.log(URLgenres);
     axios
       .get(URLgenres, { params: { page, recordsPerPage } })
@@ -31,17 +36,34 @@ const IndexGenres = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [page, recordsPerPage]);
+  }
+
+  const DeleteGenre = async (id: number) => {
+    axios
+      .delete(`${URLgenres}/${id}`)
+      .then((res: AxiosResponse) => {
+        console.log(res);
+        loadData();
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err && err.response) {
+          setErrors(err.response.data);
+        }
+      });
+  };
+
   return (
     <>
       <h3>Genres</h3>
-      <Link className="btn btn-primary " to="/genres/create">
+      <Link className="btn btn-success " to="/genres/create">
         Create Genre
       </Link>
       <RecordsPerPageSelect
         setPage={setPage}
         setRecordsPerPage={setRecordsPerPage}
       />
+      {errors ? <DisplayErrors errors={errors} /> : null}
       <Pagination
         totalAmountOfPages={totalAmountOfPages}
         currentPage={page}
@@ -60,10 +82,18 @@ const IndexGenres = () => {
             {genres?.map((genre, genId) => (
               <tr key={genId} className="table-light ">
                 <td scope="row">
-                  <Link className="btn btn-dark" to={`genres/${genre.id}`}>
+                  <Link
+                    className="btn btn-dark"
+                    to={`/genres/edit/${genre.id}`}
+                  >
                     Edit
                   </Link>
-                  <Button className="btn btn-danger">Delete</Button>
+                  <Button
+                    className="btn btn-warning"
+                    onClick={() => DeleteGenre(genre.id)}
+                  >
+                    Delete
+                  </Button>
                 </td>
                 <td>{genre.name}</td>
               </tr>

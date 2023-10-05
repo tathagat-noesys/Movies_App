@@ -12,8 +12,10 @@ const RecordsPerPageSelect = (props: recordsPerPageSelectProps) => {
         className="form-select"
         defaultValue={5}
       >
-        {select_options?.map((el) => (
-          <option value={+el}>{el}</option>
+        {select_options?.map((el, id) => (
+          <option value={+el} key={id}>
+            {el}
+          </option>
         ))}
       </select>
     </div>
