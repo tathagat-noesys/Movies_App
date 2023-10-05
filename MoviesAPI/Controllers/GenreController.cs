@@ -11,6 +11,7 @@ using MoviesAPI.Filters;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.DTOs;
 using AutoMapper;
+using MoviesAPI.Helpers;
 
 namespace MoviesAPI.Controllers
 {
@@ -40,19 +41,18 @@ namespace MoviesAPI.Controllers
         // [HttpGet("list")]
         //[ResponseCache(Duration=50)]
         // [ServiceFilter(typeof(MyActionFilter))]
-        public async Task<ActionResult<List<GenreDTO>>> Get()
+        public async Task<ActionResult<List<GenreDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
-            await Task.Delay(1);
+            //logger to console
             logger.LogInformation("Getting all genres");
-            var genres =  await context.Genres.ToListAsync();
-           // var genreDTOs = new List<GenreDTO>();
 
-           // foreach(var genre in genres)
-           // {
-            //    genreDTOs.Add(new GenreDTO { Id=genre.Id, Name=genre.Name });
-          //  }
 
-          //  return genreDTOs;
+            //Pagination
+            var queryable = context.Genres.AsQueryable();
+            await HttpContext.InsertParametersPaginationInHeader(queryable);
+            var genres = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
+            return mapper.Map<List<GenreDTO>>(genres);
+
 
             return mapper.Map<List<GenreDTO>>(genres);
 

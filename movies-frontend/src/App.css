@@ -4,3 +4,7 @@ body {
 .router-container {
   min-height: 90vh;
 }
+
+.table a {
+  margin-right: 1rem;
+}
