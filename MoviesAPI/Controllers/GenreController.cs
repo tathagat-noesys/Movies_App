@@ -82,19 +82,28 @@ namespace MoviesAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut]
-        public ActionResult Put([FromBody] Genre genre)
+        [HttpPut("{Id:int}")]
+        public async Task<ActionResult> Put(int Id,[FromBody] GenreCreationDTO genreCreationDTO)
         {
 
-            throw new NotImplementedException();
+            var genre = await context.Genres.FirstOrDefaultAsync(x =>x.Id==Id);
+            if (genre == null) { return NotFound(); }
+            genre = mapper.Map(genreCreationDTO, genre);
+            await context.SaveChangesAsync();
+            return NoContent();
 
         }
 
-        [HttpDelete]
-        public ActionResult Delete()
+        [HttpDelete("{Id:int}")]
+        public async Task<ActionResult> Delete(int Id)
         {
 
-            throw new NotImplementedException();
+           var exists = await context.Genres.AnyAsync(x => x.Id==Id);
+
+            if (!exists) { return NotFound(); }
+            context.Remove(new Genre(){ Id=Id});
+            await context.SaveChangesAsync();
+            return NoContent();
 
         }
     }
