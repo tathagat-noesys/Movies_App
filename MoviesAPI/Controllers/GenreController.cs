@@ -52,7 +52,7 @@ namespace MoviesAPI.Controllers
             await HttpContext.InsertParametersPaginationInHeader(queryable);
             var genres = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
             return mapper.Map<List<GenreDTO>>(genres);
-
+         
 
             return mapper.Map<List<GenreDTO>>(genres);
 
@@ -60,15 +60,17 @@ namespace MoviesAPI.Controllers
 
 
         [HttpGet("{Id:int}")]
-        public ActionResult<Genre> GetGenreById([BindRequired] int Id)
+        public async Task<ActionResult<GenreDTO>> GetGenreById([BindRequired] int Id)
 
 
         {
 
 
-            throw new NotImplementedException();
+            var genre = await context.Genres.FirstOrDefaultAsync(x=>x.Id==Id);
 
+            if (genre == null) { return NotFound(); }
 
+            return mapper.Map<GenreDTO>(genre);
         }
 
         [HttpPost]

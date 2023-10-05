@@ -8,3 +8,7 @@ body {
 .table a {
   margin-right: 1rem;
 }
+
+.table {
+  margin: auto;
+}
