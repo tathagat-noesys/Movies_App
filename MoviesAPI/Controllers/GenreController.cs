@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MoviesAPI.Filters;
+using Microsoft.EntityFrameworkCore;
+using MoviesAPI.DTOs;
+using AutoMapper;
 
 namespace MoviesAPI.Controllers
 {
@@ -21,11 +24,15 @@ namespace MoviesAPI.Controllers
 
 
         private readonly ILogger<GenreController> logger;
+        private readonly ApplicationDbContext context;
+        private readonly IMapper mapper;
 
-        public GenreController(ILogger<GenreController> logger)
+        public GenreController(ILogger<GenreController> logger,ApplicationDbContext context,IMapper mapper)
         {
 
             this.logger = logger;
+            this.context = context;
+            this.mapper = mapper;
         }
 
 
@@ -33,11 +40,22 @@ namespace MoviesAPI.Controllers
         // [HttpGet("list")]
         //[ResponseCache(Duration=50)]
         // [ServiceFilter(typeof(MyActionFilter))]
-        public async Task<ActionResult<List<Genre>>> Get()
+        public async Task<ActionResult<List<GenreDTO>>> Get()
         {
             await Task.Delay(1);
             logger.LogInformation("Getting all genres");
-            return new List<Genre>() { new Genre() { Id = 1, Name = "Drama" } };
+            var genres =  await context.Genres.ToListAsync();
+           // var genreDTOs = new List<GenreDTO>();
+
+           // foreach(var genre in genres)
+           // {
+            //    genreDTOs.Add(new GenreDTO { Id=genre.Id, Name=genre.Name });
+          //  }
+
+          //  return genreDTOs;
+
+            return mapper.Map<List<GenreDTO>>(genres);
+
         }
 
 
@@ -54,11 +72,12 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Genre genre)
+        public async Task<ActionResult> Post([FromBody] GenreCreationDTO genreCreationDTO)
         {
-
-            throw new NotImplementedException();
-
+            var genre = mapper.Map<Genre>(genreCreationDTO);
+            context.Genres.Add(genre);
+            await context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpPut]

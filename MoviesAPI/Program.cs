@@ -6,13 +6,22 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using MoviesAPI.Filters;
 using Microsoft.Extensions.Options;
+using MoviesAPI;
+using Microsoft.EntityFrameworkCore;
+using MoviesAPI.ApiBehavior;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers((options)=>options.Filters.Add(typeof (MyExceptionFilter)));
+builder.Services.AddControllers((options) =>
+{
+    options.Filters.Add(typeof(MyExceptionFilter));
+    options.Filters.Add(typeof(ParseBadRequest));
+}).ConfigureApiBehaviorOptions(BadRequestBehavior.Parse);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddCors((options) => {
     var frontendUrl = builder.Configuration.GetValue<string>("frontend_url");
     options.AddDefaultPolicy(builder =>
@@ -20,6 +29,8 @@ builder.Services.AddCors((options) => {
         builder.WithOrigins(frontendUrl).AllowAnyMethod().AllowAnyHeader();
     });
 });
+
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
