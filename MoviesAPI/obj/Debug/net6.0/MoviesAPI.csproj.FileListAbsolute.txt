@@ -66,3 +66,8 @@ C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\r
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\MoviesAPI.staticwebassets.runtime.json
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll

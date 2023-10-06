@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using MoviesAPI;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.ApiBehavior;
+using MoviesAPI.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,8 @@ builder.Services.AddCors((options) => {
 });
 
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IFileStorageService, InAppStorageService>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
@@ -54,7 +57,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
-
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -14,12 +14,13 @@ const CreateActors = () => {
     try {
       const formData = convertActorToFormData(actor);
 
-      await axios({
+      let res = await axios({
         method: "post",
         url: URLactors,
         data: formData,
         headers: { "Content-type": "multipart/form-data" },
       });
+      console.log("posted error:", res);
       navigate("/actors");
     } catch (err: object | any) {
       if (err && err.response) {
