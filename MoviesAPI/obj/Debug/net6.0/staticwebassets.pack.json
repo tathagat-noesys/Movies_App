@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg",
+      "PackagePath": "staticwebassets\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\ab235c11-4217-45d0-b8cd-77dedda0fa1d.jpg",
+      "PackagePath": "staticwebassets\\actors\\ab235c11-4217-45d0-b8cd-77dedda0fa1d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg",
+      "PackagePath": "staticwebassets\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MoviesAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.MoviesAPI.props",
+      "PackagePath": "build\\MoviesAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.MoviesAPI.props",
+      "PackagePath": "buildMultiTargeting\\MoviesAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.MoviesAPI.props",
+      "PackagePath": "buildTransitive\\MoviesAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

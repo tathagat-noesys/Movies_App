@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dMIxzYrJUnYcJkgMhbuk8Jn/lz8/uhL2slizTBpj3OY=",
+  "Hash": "G5ZauAREd6mix0a6dLc4AHWyJsOXnLKLlalDYHUKlqM=",
   "Source": "MoviesAPI",
   "BasePath": "_content/MoviesAPI",
   "Mode": "Default",
@@ -15,5 +15,57 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "actors/74c2d915-cba5-4a26-9807-158315e2886f.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\ab235c11-4217-45d0-b8cd-77dedda0fa1d.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "actors/ab235c11-4217-45d0-b8cd-77dedda0fa1d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\actors\\ab235c11-4217-45d0-b8cd-77dedda0fa1d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "actors/fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg"
+    }
+  ]
 }
