@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
-import { genreCreationDTO, genreDTO } from "./genres.model";
+import { genreDTO } from "./genres.model";
 import { URLgenres } from "../Endpoints";
 import GenericList from "../utils/GenericListComponen";
 import Button from "../utils/Button";
