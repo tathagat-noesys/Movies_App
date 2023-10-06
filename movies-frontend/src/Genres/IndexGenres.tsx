@@ -8,13 +8,14 @@ import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
 import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
 import DisplayErrors from "../utils/DisplayError";
-
+import customConfirm from "../utils/customConfirm";
 const IndexGenres = () => {
   const [genres, setGenres] = useState<genreDTO[]>([]);
   const [totalAmountOfPages, setTotalAmountOfPages] = useState<number>(0);
   const [recordsPerPage, setRecordsPerPage] = useState<number>(5);
   const [page, setPage] = useState<number>(1);
   const [errors, setErrors] = useState<string[]>([]);
+
   useEffect(() => {
     loadData();
   }, [page, recordsPerPage]);
@@ -90,7 +91,7 @@ const IndexGenres = () => {
                   </Link>
                   <Button
                     className="btn btn-warning"
-                    onClick={() => DeleteGenre(genre.id)}
+                    onClick={() => customConfirm(() => DeleteGenre(genre.id))}
                   >
                     Delete
                   </Button>
