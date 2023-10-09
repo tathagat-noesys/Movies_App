@@ -1,5 +1,6 @@
 const DisplayErrors = (props: displayErrorProps) => {
   const style = { color: "red" };
+  console.log(props.errors);
   return (
     <>
       {props.errors ? (

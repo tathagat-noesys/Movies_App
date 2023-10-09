@@ -7,20 +7,26 @@ import ReactMarkdown from "react-markdown";
 import Loading from "../utils/Loading";
 import Map from "../utils/Map";
 import coordinateDTO from "./coordinates.model";
+import DisplayErrors from "../utils/DisplayError";
 export default function MovieDetails() {
   const { id }: any = useParams();
   const [movie, setMovie] = useState<moviesDTO>();
-
+  const [errors, setErrors] = useState<string[]>([]);
   useEffect(() => {
     axios
       .get(`${URLmovies}/${id}`)
       .then((response: AxiosResponse<moviesDTO>) => {
-        console.log(response);
         response.data.releaseDate = new Date(response.data.releaseDate);
+
         setMovie(response.data);
+      })
+      .catch((err) => {
+        if (err.response.data.status == 404) {
+          setErrors(["Resource Not Found in the database"]);
+        }
       });
   }, [id]);
-  console.log(movie);
+  // console.log(movie);
   function transformCoordinates(): coordinateDTO[] {
     if (movie?.movieTheaters) {
       const coordinates = movie.movieTheaters.map((movieTheater) => {
@@ -42,15 +48,31 @@ export default function MovieDetails() {
       return "";
     }
 
+    if (trailer.includes("/embed")) {
+      return trailer;
+    }
     let videoId = trailer.split("v=")[1];
     const ampersandPosition = videoId.indexOf("&");
-    if (ampersandPosition !== -1) {
+    if (ampersandPosition !== -1 && ampersandPosition) {
       videoId = videoId.substring(0, ampersandPosition);
     }
 
     return `https://www.youtube.com/embed/${videoId}`;
   }
 
+  if (errors.length) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <DisplayErrors errors={errors} />
+      </div>
+    );
+  }
   return movie ? (
     <div>
       <h2>
@@ -67,11 +89,24 @@ export default function MovieDetails() {
         </Link>
       ))}{" "}
       | {movie.releaseDate.toDateString()}
-      <div style={{ display: "flex", marginTop: "1rem" }}>
-        <span style={{ display: "inline-block", marginRight: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          marginTop: "1rem",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <span
+          style={{
+            display: "inline-block",
+            marginRight: "1rem",
+            textAlign: "center",
+          }}
+        >
           <img
             src={movie.poster}
-            style={{ width: "225px", height: "315px" }}
+            style={{ width: "415px", height: "315px" }}
             alt="poster"
           />
         </span>
@@ -81,7 +116,7 @@ export default function MovieDetails() {
               title="youtube-trailer"
               width="560"
               height="315"
-              //   src={generateEmbeddedVideoURL(movie.trailer)}
+              src={generateEmbeddedVideoURL(movie.trailer)}
               frameBorder={0}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -134,7 +169,19 @@ export default function MovieDetails() {
       {movie.movieTheaters && movie.movieTheaters.length > 0 ? (
         <div>
           <h2>Showing on</h2>
-          <Map coordinates={transformCoordinates()} readOnly={true} />
+          <ol style={{ display: "flex", justifyContent: "space-evenly" }}>
+            {movie &&
+              movie.movieTheaters?.map((theaters) => (
+                <li>
+                  <h6>{theaters.name}</h6>
+                </li>
+              ))}
+          </ol>
+          <Map
+            coordinates={transformCoordinates()}
+            readOnly={true}
+            handleMapClick={() => console.log(1)}
+          />
         </div>
       ) : null}
     </div>

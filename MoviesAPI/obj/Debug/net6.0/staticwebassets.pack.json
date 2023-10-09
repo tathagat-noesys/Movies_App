@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\518f2c85-4c4c-4c9b-b8b6-36e5e92e78d5.jpg",
+      "PackagePath": "staticwebassets\\actors\\518f2c85-4c4c-4c9b-b8b6-36e5e92e78d5.jpg"
+    },
+    {
       "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\6030df97-30a8-4ce4-b7cf-6fc97203a31f.jpg",
       "PackagePath": "staticwebassets\\actors\\6030df97-30a8-4ce4-b7cf-6fc97203a31f.jpg"
     },
@@ -11,6 +15,10 @@
     {
       "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg",
       "PackagePath": "staticwebassets\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\96a57fa8-2fa5-4c83-8697-f3b94c4d5be1.jpg",
+      "PackagePath": "staticwebassets\\actors\\96a57fa8-2fa5-4c83-8697-f3b94c4d5be1.jpg"
     },
     {
       "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\a18efaf4-e112-4678-9ad9-a936eb4a75ae.jpg",
@@ -35,6 +43,10 @@
     {
       "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg",
       "PackagePath": "staticwebassets\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\de8a941b-ef7b-48cb-9ea5-dba8406ccd69.jpg",
+      "PackagePath": "staticwebassets\\movies\\de8a941b-ef7b-48cb-9ea5-dba8406ccd69.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MoviesAPI.Microsoft.AspNetCore.StaticWebAssets.props",

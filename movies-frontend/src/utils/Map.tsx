@@ -46,12 +46,14 @@ const Map = (props: mapProps) => {
           attribution="React Movies"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapClick
-          setCoordinates={(coordinates) => {
-            setCoordinatesState([coordinates]);
-            props.handleMapClick(coordinates);
-          }}
-        />
+        {props.readOnly ? null : (
+          <MapClick
+            setCoordinates={(coordinates) => {
+              setCoordinatesState([coordinates]);
+              props.handleMapClick(coordinates);
+            }}
+          />
+        )}
         {coordinatesState.map((points) => (
           <Marker
             key={`${points.lat} + ${points.lng}`}

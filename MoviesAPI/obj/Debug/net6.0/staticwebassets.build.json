@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "L3XYzqCjqaCnMIaRiDFD8lhGri9n6F6Ki0ApYBt40uI=",
+  "Hash": "KELfwWSky2t0RwTn8gX8xEkAmy6i4RuXu0tusabryOs=",
   "Source": "MoviesAPI",
   "BasePath": "_content/MoviesAPI",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\518f2c85-4c4c-4c9b-b8b6-36e5e92e78d5.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "actors/518f2c85-4c4c-4c9b-b8b6-36e5e92e78d5.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\actors\\518f2c85-4c4c-4c9b-b8b6-36e5e92e78d5.jpg"
+    },
     {
       "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\6030df97-30a8-4ce4-b7cf-6fc97203a31f.jpg",
       "SourceId": "MoviesAPI",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\actors\\74c2d915-cba5-4a26-9807-158315e2886f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\96a57fa8-2fa5-4c83-8697-f3b94c4d5be1.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "actors/96a57fa8-2fa5-4c83-8697-f3b94c4d5be1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\actors\\96a57fa8-2fa5-4c83-8697-f3b94c4d5be1.jpg"
     },
     {
       "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\actors\\a18efaf4-e112-4678-9ad9-a936eb4a75ae.jpg",
@@ -168,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\actors\\fad0fda4-75f4-41f0-b188-c6297e5c5304.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\de8a941b-ef7b-48cb-9ea5-dba8406ccd69.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "movies/de8a941b-ef7b-48cb-9ea5-dba8406ccd69.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\movies\\de8a941b-ef7b-48cb-9ea5-dba8406ccd69.jpg"
     }
   ]
 }
