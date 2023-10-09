@@ -4,6 +4,7 @@ import { LandingPageDTO, landingPageDTO } from "./movies.model";
 import css from "./LandingPage.module.css";
 import axios, { AxiosResponse } from "axios";
 import { URLmovies } from "../Endpoints";
+import "@fontsource/titillium-web";
 const LandingPage = () => {
   const [movies, setMovies] = useState<LandingPageDTO>({});
 
