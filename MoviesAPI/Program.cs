@@ -10,6 +10,10 @@ using MoviesAPI;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.ApiBehavior;
 using MoviesAPI.Helpers;
+using NetTopologySuite;
+using NetTopologySuite.Geometries;
+using System.Collections.Generic;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +26,18 @@ builder.Services.AddControllers((options) =>
 }).ConfigureApiBehaviorOptions(BadRequestBehavior.Parse);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlOptions => sqlOptions.UseNetTopologySuite()));
+
+builder.Services.AddSingleton(provider => new MapperConfiguration(config =>
+{
+    var geometryFactory = provider.GetRequiredService<GeometryFactory>();
+    config.AddProfile(new AutoMapperProfiles(geometryFactory));
+}).CreateMapper());
+
+builder.Services.AddSingleton<GeometryFactory>(NtsGeometryServices
+               .Instance.CreateGeometryFactory(srid: 4326));
+
+
 builder.Services.AddCors((options) => {
     var frontendUrl = builder.Configuration.GetValue<string>("frontend_url");
     options.AddDefaultPolicy(builder =>

@@ -5,18 +5,19 @@ export default function convertActorToFormData(
 ): FormData {
   const formData = new FormData();
 
-  formData.append("name", actor.name);
+  formData.set("name", actor.name);
   if (actor.biography) {
-    formData.append("biography", actor.biography);
+    formData.set("biography", actor.biography);
   }
 
   if (actor.DateOfBirth) {
-    formData.append("dateOfBirth", formatDate(actor.DateOfBirth));
+    formData.set("dateOfBirth", formatDate(actor.DateOfBirth));
   }
 
   if (actor.image) {
-    formData.append("picture", actor.image);
+    formData.set("picture", actor.image);
   }
+  console.log(formData, "from");
   return formData;
 }
 

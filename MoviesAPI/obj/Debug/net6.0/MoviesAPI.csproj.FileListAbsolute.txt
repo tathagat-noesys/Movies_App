@@ -71,3 +71,7 @@ C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\A
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Blobs.dll
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Common.dll
 C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\NetTopologySuite.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\bin\Debug\net6.0\NetTopologySuite.IO.SqlServerBytes.dll
+C:\Users\Tathagat\React_Asp.net_Learning\Movies_App\MoviesAPI\obj\Debug\net6.0\EFCoreSqlServerNetTopologySuite.cs

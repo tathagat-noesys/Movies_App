@@ -85,7 +85,7 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
         onChange={(newPage) => setPage(newPage)}
       />
       <GenericList list={entities}>
-        <table className="table table-border table-dark table-hover">
+        <table className="table table-border table-hover">
           {props.children(entities!, buttons)}
         </table>
       </GenericList>

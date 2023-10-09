@@ -10,6 +10,7 @@ const EditEntity = <TCreation, TRead>({
   url,
   transform,
   indexURL,
+  transformFormData,
   entityName,
   children,
 }: editEntityProps<TCreation, TRead>) => {
@@ -36,11 +37,25 @@ const EditEntity = <TCreation, TRead>({
 
   const edit = async (entityToEdit: TCreation) => {
     try {
-      await axios.put(`${url}/${id}`, entityToEdit);
+      if (transformFormData) {
+        const formData = transformFormData(entityToEdit);
+        console.log(formData);
+        let res = await axios({
+          method: "put",
+          url: `${url}/${id}`,
+          data: formData,
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        console.log(res.headers.message);
+      } else {
+        await axios.put(`${url}/${id}`, entityToEdit);
+      }
+
       navigate(indexURL);
     } catch (err: object | any) {
       if (err && err.response) {
-        setErrors(err.response.data);
+        console.info(err);
+        //setErrors(err.response.message);
       }
     }
   };
@@ -59,6 +74,7 @@ export default EditEntity;
 interface editEntityProps<TCreation, TRead> {
   url: string;
   transform(entity: TRead): TCreation;
+  transformFormData?(model: TCreation): FormData;
   indexURL: string;
   entityName: string;
   children(
