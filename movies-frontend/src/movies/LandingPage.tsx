@@ -28,7 +28,7 @@ const LandingPage = () => {
 
         <h3>Upcoming Releases</h3>
         <div>
-          <MoviesList movies={movies.upcompingReleases} />
+          <MoviesList movies={movies.upcomingReleases} />
         </div>
       </div>
     </>

@@ -17,7 +17,7 @@ export interface moviesDTO {
 
 export interface LandingPageDTO {
   inTheaters?: moviesDTO[];
-  upcompingReleases?: moviesDTO[];
+  upcomingReleases?: moviesDTO[];
 }
 
 export interface movieCreationDTO {

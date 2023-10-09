@@ -106,7 +106,7 @@ export default function MovieDetails() {
         >
           <img
             src={movie.poster}
-            style={{ width: "500px", height: "315px" }}
+            style={{ width: "350px", height: "315px" }}
             alt="poster"
           />
         </span>
@@ -114,7 +114,7 @@ export default function MovieDetails() {
           <div>
             <iframe
               title="youtube-trailer"
-              width="560"
+              width="640"
               height="315"
               src={generateEmbeddedVideoURL(movie.trailer)}
               frameBorder={0}
@@ -127,7 +127,7 @@ export default function MovieDetails() {
       {movie.summary ? (
         <div style={{ marginTop: "1rem" }}>
           <h3>Summary</h3>
-          <div style={{ padding: "10px" }}>
+          <div style={{ padding: " 0px 50px" }}>
             <ReactMarkdown>{movie.summary}</ReactMarkdown>
           </div>
         </div>
