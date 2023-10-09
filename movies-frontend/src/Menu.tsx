@@ -3,28 +3,37 @@ import "@fontsource/titillium-web";
 
 const Menu = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{}}>
       <div
         className="container-fluid"
         style={{
           fontFamily: "Titillium Web",
+          display: "flex",
+          justifyContent: "space-between",
+          width: "100%",
         }}
       >
-        <NavLink className="navbar-brand" to="/">
-          React Movies
-        </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        <div>
+          <NavLink className="navbar-brand" to="/">
+            React Movies
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav"
+          style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto mr-auto">
             <li className="nav-item">
               <NavLink className="nav-link" to="/genres">
