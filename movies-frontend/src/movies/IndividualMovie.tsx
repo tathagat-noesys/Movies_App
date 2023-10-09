@@ -1,15 +1,16 @@
 import { moviesDTO } from "./movies.model";
 import css from "./IndividualMovie.model.css";
+import { Link } from "react-router-dom";
 const IndividualMovie = ({ id, title, poster }: moviesDTO) => {
-  const buildLink = () => `/movie/${id}`;
+  const buildLink = () => `/movies/${id}`;
   return (
     <div key={id} className={css.main} id="main">
-      <a href={buildLink()}>
+      <Link to={buildLink()}>
         <img src={poster}></img>
-      </a>
+      </Link>
 
       <p>
-        <a href={buildLink()}>{title}</a>
+        <Link to={buildLink()}>{title}</Link>
       </p>
     </div>
   );

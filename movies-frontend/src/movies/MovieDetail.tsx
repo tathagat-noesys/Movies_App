@@ -106,7 +106,7 @@ export default function MovieDetails() {
         >
           <img
             src={movie.poster}
-            style={{ width: "415px", height: "315px" }}
+            style={{ width: "500px", height: "315px" }}
             alt="poster"
           />
         </span>
@@ -127,7 +127,7 @@ export default function MovieDetails() {
       {movie.summary ? (
         <div style={{ marginTop: "1rem" }}>
           <h3>Summary</h3>
-          <div>
+          <div style={{ padding: "10px" }}>
             <ReactMarkdown>{movie.summary}</ReactMarkdown>
           </div>
         </div>
