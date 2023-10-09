@@ -69,7 +69,9 @@ interface mapProps {
   height: string;
   coordinates: coordinatesDTO[];
   handleMapClick(coordinates: coordinatesDTO): void;
+  readOnly: boolean;
 }
 Map.defaultProps = {
   height: "300px",
+  readOnly: false,
 };

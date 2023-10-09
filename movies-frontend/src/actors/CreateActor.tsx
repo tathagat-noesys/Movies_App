@@ -2,7 +2,7 @@ import { useState } from "react";
 import ActorForm from "./ActorForm";
 import { actorsCreationDTO } from "./actorsmodel";
 import DisplayErrors from "./../utils/DisplayError";
-import convertActorToFormData from "../utils/formDataUtils";
+import { convertActorToFormData } from "../utils/formDataUtils";
 import axios from "axios";
 import { URLactors } from "../Endpoints";
 import { useNavigate } from "react-router-dom";

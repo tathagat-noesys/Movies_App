@@ -3,7 +3,7 @@ import EditEntity from "./../utils/EditEntity";
 import { actorDTO, actorsCreationDTO } from "./actorsmodel.d";
 import { URLactors } from "../Endpoints";
 
-import convertActorToFormData from "../utils/formDataUtils";
+import { convertActorToFormData } from "../utils/formDataUtils";
 
 const EditActors = () => {
   function transform(actor: actorDTO): actorsCreationDTO {
