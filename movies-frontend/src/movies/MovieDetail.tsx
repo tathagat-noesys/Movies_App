@@ -22,7 +22,7 @@ export default function MovieDetails() {
       })
       .catch((err) => {
         if (err.response.data.status == 404) {
-          setErrors(["Resource Not Found in the database"]);
+          setErrors(["Resource Not Found in the Database"]);
         }
       });
   }, [id]);
@@ -69,12 +69,12 @@ export default function MovieDetails() {
           alignItems: "center",
         }}
       >
-        <DisplayErrors errors={errors} />
+        <DisplayErrors errors={errors} font="25px" />
       </div>
     );
   }
   return movie ? (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h2>
         {movie.title} ({movie.releaseDate.getFullYear()})
       </h2>

@@ -3,6 +3,7 @@ body {
 }
 .router-container {
   min-height: 90vh;
+  margin-bottom: 2vh;
 }
 
 .table a {

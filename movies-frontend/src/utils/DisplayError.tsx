@@ -1,5 +1,5 @@
 const DisplayErrors = (props: displayErrorProps) => {
-  const style = { color: "red" };
+  const style = { color: "red", fontSize: props.font };
   console.log(props.errors);
   return (
     <>
@@ -22,4 +22,5 @@ export default DisplayErrors;
 
 interface displayErrorProps {
   errors?: string[];
+  font?: string;
 }
