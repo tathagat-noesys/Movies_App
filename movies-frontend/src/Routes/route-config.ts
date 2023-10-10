@@ -13,6 +13,7 @@ import FilterMovies from "../movies/FilterMovies";
 import LandingPage from "../movies/LandingPage";
 import MovieDetails from "../movies/MovieDetail";
 import RedirectToLandingPage from "../utils/RedirectToLandingPage";
+import LoginPage from "./../Login/LoginPage";
 
 export const routes = [
   { path: "/", component: LandingPage, exact: true },
@@ -33,6 +34,8 @@ export const routes = [
   { path: "/movies/create", component: CreateMovie, exact: true },
   { path: "/movies/edit/:id", component: EditMovie, exact: true },
   { path: "/movies/:id", component: MovieDetails, exact: true },
+
+  { path: "/login", component: LoginPage, exact: true },
 
   { path: "*", component: RedirectToLandingPage, exact: false },
 ];

@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "@fontsource/titillium-web";
 import logo from "./assets/icon.png";
+import { useAdminAuthContext } from "./Admin/AuthContext";
+import Button from "./utils/Button";
 const Menu = () => {
+  const context = useAdminAuthContext();
+
+  console.log(context?.adminAuth);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div
@@ -70,6 +75,24 @@ const Menu = () => {
                 Create a Movie
               </NavLink>
             </li>
+            {/* -------- */}
+            {context?.adminAuth ? (
+              <li className="nav-item">
+                <NavLink
+                  onClick={() => context.setAdminAuth(false)}
+                  className="nav-link"
+                  to="/login"
+                >
+                  Logout
+                </NavLink>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>

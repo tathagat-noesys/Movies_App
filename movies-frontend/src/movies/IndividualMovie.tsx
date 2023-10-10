@@ -11,16 +11,17 @@ const IndividualMovie = ({ id, title, poster, releaseDate }: moviesDTO) => {
         <img src={poster}></img>
       </Link>
 
-      <p
+      <div
         style={{
-          fontFamily: "Google Sans",
+          fontFamily: "Roboto",
+          marginTop: "1%",
         }}
       >
         <Link to={buildLink()}>
-          {title}
+          <b>{title}</b>
           <p>{new Date(releaseDate).toUTCString().substring(0, 17)}</p>
         </Link>
-      </p>
+      </div>
     </div>
   );
 };

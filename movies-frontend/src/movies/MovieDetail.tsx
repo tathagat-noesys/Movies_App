@@ -17,6 +17,7 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState<moviesDTO>();
   const [errors, setErrors] = useState<string[]>([]);
   const adminContext = useAdminAuthContext();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   console.log(adminContext?.adminAuth);
   useEffect(() => {
     axios
@@ -80,11 +81,15 @@ export default function MovieDetails() {
     axios
       .delete(`${URLmovies}/${id}`)
       .then((res: AxiosResponse<object>) => {
+        if (res) {
+          console.log("deleted");
+        }
         alert(`${movie?.title} deleted successfully`);
         navigate("/");
       })
       .catch((err) => console.log(err));
   }
+  console.log(isLoading);
   return movie ? (
     <div style={{ textAlign: "center" }}>
       <h2>
@@ -115,15 +120,16 @@ export default function MovieDetails() {
             marginRight: "1rem",
             textAlign: "center",
           }}
+          className={cssStyles["poster-container"]}
         >
           <img
             src={movie.poster}
-            style={{ width: "350px", height: "315px" }}
+            style={{ width: "370px", height: "315px", borderRadius: "5px" }}
             alt="poster"
           />
         </span>
         {movie.trailer ? (
-          <div>
+          <div className={cssStyles["iframe-container"]}>
             <iframe
               title="youtube-trailer"
               width="640"
@@ -132,7 +138,15 @@ export default function MovieDetails() {
               frameBorder={0}
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              onLoad={() => setIsLoading(() => false)}
+              className={isLoading ? cssStyles["hidden"] : cssStyles["active"]}
             ></iframe>
+            <h4
+              className={isLoading ? cssStyles["active"] : cssStyles["hidden"]}
+              style={{ color: "wheat" }}
+            >
+              Loading...
+            </h4>
           </div>
         ) : null}
       </div>
@@ -147,17 +161,7 @@ export default function MovieDetails() {
       {movie.actors && movie.actors.length > 0 ? (
         <div style={{ marginTop: "1rem" }}>
           <h3>Actors</h3>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "100%",
-              justifyContent: "space-around",
-              alignItems: "center",
-              border: "1px solid blue",
-              padding: "30px",
-            }}
-          >
+          <div className={cssStyles["actor-card-container"]}>
             {movie.actors?.map((actor) => (
               <div
                 key={actor.id}
@@ -165,17 +169,20 @@ export default function MovieDetails() {
                   marginBottom: "2px",
                   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                   padding: "20px",
-                  width: "200px",
+                  width: "250px",
+                  height: "280px",
                   borderRadius: "5px",
                 }}
+                className={cssStyles.card}
               >
                 <img
                   alt="pic"
                   src={actor.picture}
                   style={{
-                    width: "90px",
-                    height: "60px",
+                    width: "150px",
+                    height: "130px",
                     verticalAlign: "middle",
+                    borderRadius: "5px",
                   }}
                 />
                 <div
@@ -193,10 +200,13 @@ export default function MovieDetails() {
                       marginLeft: "1rem",
                     }}
                   >
-                    {actor.name}{" "}
+                    <b>{actor.name} </b>
                   </span>
-                  <span> as </span>
-                  <span>{actor.character}</span>
+
+                  <span> staring as </span>
+                  <span>
+                    <b>{actor.character}</b>
+                  </span>
                 </div>
               </div>
             ))}
@@ -224,13 +234,15 @@ export default function MovieDetails() {
             <>
               {" "}
               <Link to={`/movies/edit/${id}`}>
-                <Button className={`btn btn-dark ${cssStyles["edit-button"]}`}>
+                <Button
+                  className={`btn btn-warning ${cssStyles["edit-button"]}`}
+                >
                   Edit Movie
                 </Button>
               </Link>
               <Button
                 onClick={() => deleteMovie(id)}
-                className={`btn btn-dark ${cssStyles["edit-button"]}`}
+                className={`btn btn-danger ${cssStyles["edit-button"]}`}
               >
                 Delete Movie
               </Button>
