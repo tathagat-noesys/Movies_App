@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "@fontsource/titillium-web";
-
+import logo from "./assets/icon.png";
 const Menu = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,7 +15,17 @@ const Menu = () => {
       >
         <div>
           <NavLink className="navbar-brand" to="/">
-            React Movies
+            <img
+              src={logo}
+              style={{
+                width: "2rem",
+                height: "2rem",
+                display: "inline",
+                margin: "5px",
+                borderRadius: "50%",
+              }}
+            ></img>
+            <span>React Movies</span>
           </NavLink>
           <button
             className="navbar-toggler"

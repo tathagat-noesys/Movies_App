@@ -22,12 +22,12 @@ const LandingPage = () => {
   return (
     <>
       <div className={css["landing-page-container"]}>
-        <h3>In Theater</h3>
+        <h2 className={css["inthearter-header"]}>In Theaters</h2>
         <div>
           <MoviesList movies={movies.inTheaters} />
         </div>
 
-        <h3>Upcoming Releases</h3>
+        <h2>Upcoming Releases</h2>
         <div>
           <MoviesList movies={movies.upcomingReleases} />
         </div>

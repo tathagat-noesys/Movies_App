@@ -4,6 +4,7 @@ import css from "./MoviesList.module.css";
 import GenericList from "../utils/GenericListComponen";
 
 const MoviesList = (props: moviesListProps) => {
+  console.log(props);
   return (
     <GenericList list={props.movies}>
       <div className={css.div}>

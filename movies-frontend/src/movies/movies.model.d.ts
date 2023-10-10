@@ -23,7 +23,7 @@ export interface LandingPageDTO {
 export interface movieCreationDTO {
   title: string;
   inTheaters: boolean;
-  upcompingReleases: boolean;
+  upcompingReleases?: boolean;
   trailer: string;
   summary?: string;
   releaseDate?: Date;

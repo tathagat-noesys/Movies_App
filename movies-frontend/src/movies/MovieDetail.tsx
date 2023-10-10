@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { URLmovies } from "../Endpoints";
 import { moviesDTO } from "./movies.model";
 import ReactMarkdown from "react-markdown";
@@ -8,10 +8,16 @@ import Loading from "../utils/Loading";
 import Map from "../utils/Map";
 import coordinateDTO from "./coordinates.model";
 import DisplayErrors from "../utils/DisplayError";
+import Button from "../utils/Button";
+import cssStyles from "./MovieDetails.module.css";
+import { useAdminAuthContext } from "../Admin/AuthContext";
 export default function MovieDetails() {
+  const navigate = useNavigate();
   const { id }: any = useParams();
   const [movie, setMovie] = useState<moviesDTO>();
   const [errors, setErrors] = useState<string[]>([]);
+  const adminContext = useAdminAuthContext();
+  console.log(adminContext?.adminAuth);
   useEffect(() => {
     axios
       .get(`${URLmovies}/${id}`)
@@ -51,13 +57,8 @@ export default function MovieDetails() {
     if (trailer.includes("/embed")) {
       return trailer;
     }
-    let videoId = trailer.split("v=")[1];
-    const ampersandPosition = videoId.indexOf("&");
-    if (ampersandPosition !== -1 && ampersandPosition) {
-      videoId = videoId.substring(0, ampersandPosition);
-    }
 
-    return `https://www.youtube.com/embed/${videoId}`;
+    return `${trailer}`;
   }
 
   if (errors.length) {
@@ -72,6 +73,17 @@ export default function MovieDetails() {
         <DisplayErrors errors={errors} font="25px" />
       </div>
     );
+  }
+
+  function deleteMovie(id: number) {
+    console.log(`${URLmovies}/${id}`);
+    axios
+      .delete(`${URLmovies}/${id}`)
+      .then((res: AxiosResponse<object>) => {
+        alert(`${movie?.title} deleted successfully`);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   }
   return movie ? (
     <div style={{ textAlign: "center" }}>
@@ -135,32 +147,57 @@ export default function MovieDetails() {
       {movie.actors && movie.actors.length > 0 ? (
         <div style={{ marginTop: "1rem" }}>
           <h3>Actors</h3>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-around",
+              alignItems: "center",
+              border: "1px solid blue",
+              padding: "30px",
+            }}
+          >
             {movie.actors?.map((actor) => (
-              <div key={actor.id} style={{ marginBottom: "2px" }}>
+              <div
+                key={actor.id}
+                style={{
+                  marginBottom: "2px",
+                  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                  padding: "20px",
+                  width: "200px",
+                  borderRadius: "5px",
+                }}
+              >
                 <img
                   alt="pic"
                   src={actor.picture}
-                  style={{ width: "50px", verticalAlign: "middle" }}
+                  style={{
+                    width: "90px",
+                    height: "60px",
+                    verticalAlign: "middle",
+                  }}
                 />
-                <span
+                <div
                   style={{
-                    display: "inline-block",
-                    width: "200px",
-                    marginLeft: "1rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  {actor.name}
-                </span>
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: "45px",
-                  }}
-                >
-                  ...
-                </span>
-                <span>{actor.character}</span>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "200px",
+                      marginLeft: "1rem",
+                    }}
+                  >
+                    {actor.name}{" "}
+                  </span>
+                  <span> as </span>
+                  <span>{actor.character}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -171,8 +208,8 @@ export default function MovieDetails() {
           <h2>Showing on</h2>
           <ol style={{ display: "flex", justifyContent: "space-evenly" }}>
             {movie &&
-              movie.movieTheaters?.map((theaters) => (
-                <li>
+              movie.movieTheaters?.map((theaters, id) => (
+                <li key={id}>
                   <h6>{theaters.name}</h6>
                 </li>
               ))}
@@ -182,6 +219,23 @@ export default function MovieDetails() {
             readOnly={true}
             handleMapClick={() => console.log(1)}
           />
+
+          {adminContext?.adminAuth ? (
+            <>
+              {" "}
+              <Link to={`/movies/edit/${id}`}>
+                <Button className={`btn btn-dark ${cssStyles["edit-button"]}`}>
+                  Edit Movie
+                </Button>
+              </Link>
+              <Button
+                onClick={() => deleteMovie(id)}
+                className={`btn btn-dark ${cssStyles["edit-button"]}`}
+              >
+                Delete Movie
+              </Button>
+            </>
+          ) : null}
         </div>
       ) : null}
     </div>
