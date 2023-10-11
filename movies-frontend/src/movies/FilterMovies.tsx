@@ -28,10 +28,12 @@ export default function FilterMovies() {
   const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
 
   useEffect(() => {
-    axios.get(`${URLgenres}`).then((response: AxiosResponse<genreDTO[]>) => {
-      setGenres(response.data);
-    });
-  }, []);
+    axios
+      .get(`${URLgenres}?Page=1&RecordsPerPage=50`)
+      .then((response: AxiosResponse<genreDTO[]>) => {
+        setGenres(response.data);
+      });
+  }, [movies]);
 
   useEffect(() => {
     if (query.get("title")) {
@@ -116,8 +118,30 @@ export default function FilterMovies() {
                 </div>
                 <div className="col-auto">
                   <select
+                    id="genreId"
                     className="form-select"
-                    {...formikProps.getFieldProps("genreId")}
+                    onChange={(event) => {
+                      console.log(
+                        event.target.value,
+                        `${URLmovies}/movie-genre?${parseInt(
+                          event.target.value
+                        )}`
+                      );
+                      axios
+                        .get(
+                          `${URLmovies}/movie-genre?genreId=${parseInt(
+                            event.target.value
+                          )}`
+                        )
+                        .then((res) => {
+                          console.log("Res", res);
+                          setMovies(res.data);
+                        })
+                        .catch((err) => {
+                          setMovies([]);
+                          console.log(err);
+                        });
+                    }}
                   >
                     <option value="0">--Choose a genre--</option>
                     {genres.map((genre) => (

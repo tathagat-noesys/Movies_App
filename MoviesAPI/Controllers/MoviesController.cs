@@ -215,5 +215,30 @@ namespace MoviesAPI.Controllers
             await fileStorageService.DeleteFile(movie.Poster, container);
             return NoContent();
         }
+
+        [HttpGet("movie-genre")]
+        public async Task<ActionResult<List<MovieDTO>>> GetGenId([FromQuery] int genreId)
+        {
+            var moviesQueryable = context.Movies.AsQueryable();
+
+            if (genreId != 0)
+            {
+                moviesQueryable = moviesQueryable
+                    .Where(x => x.MoviesGenres.Any(mg => mg.GenreId == genreId));
+            }
+
+            var movies = await moviesQueryable.ToListAsync();
+
+            if (movies == null || movies.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var dtos = mapper.Map<List<MovieDTO>>(movies);
+            return dtos;
+        }
+
+
+
     }
 }
