@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f7huYFYL9U377bJgOQ/HKsuOfVUzOjGrtUg32ULHTJA=",
+  "Hash": "AjlTQK7bec5MXkVCjF4khjKh96/kRoVR3XlMHd1d8oI=",
   "Source": "MoviesAPI",
   "BasePath": "_content/MoviesAPI",
   "Mode": "Default",
@@ -425,6 +425,23 @@
       "OriginalItemSpec": "wwwroot\\movies\\3a17525d-8eee-4144-860c-d04daab7ad59.jpg"
     },
     {
+      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\5a62b945-28c1-4f5a-9f7f-ee8f51189f3d.jpg",
+      "SourceId": "MoviesAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "RelativePath": "movies/5a62b945-28c1-4f5a-9f7f-ee8f51189f3d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\movies\\5a62b945-28c1-4f5a-9f7f-ee8f51189f3d.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\7de454e8-cdde-44cb-8957-57fe35193a8a.jpg",
       "SourceId": "MoviesAPI",
       "SourceType": "Discovered",
@@ -559,23 +576,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\movies\\bab22833-e015-438d-9f8d-34a57d5abc02.png"
-    },
-    {
-      "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\c0f8e9fd-93fa-44f2-9402-c2aeb150d3c4.jpg",
-      "SourceId": "MoviesAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\",
-      "BasePath": "_content/MoviesAPI",
-      "RelativePath": "movies/c0f8e9fd-93fa-44f2-9402-c2aeb150d3c4.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\movies\\c0f8e9fd-93fa-44f2-9402-c2aeb150d3c4.jpg"
     },
     {
       "Identity": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\wwwroot\\movies\\d0ee7099-e1b2-45f6-b5c7-f4253e9c2cc3.jpg",

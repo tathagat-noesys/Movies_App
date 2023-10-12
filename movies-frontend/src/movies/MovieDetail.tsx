@@ -11,6 +11,7 @@ import DisplayErrors from "../utils/DisplayError";
 import Button from "../utils/Button";
 import cssStyles from "./MovieDetails.module.css";
 import { useAdminAuthContext } from "../Admin/AuthContext";
+import "@fontsource/titillium-web";
 export default function MovieDetails() {
   const navigate = useNavigate();
   const { id }: any = useParams();
@@ -91,7 +92,7 @@ export default function MovieDetails() {
   }
   console.log(isLoading);
   return movie ? (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center", fontFamily: "Titillium-Web" }}>
       <h2>
         {movie.title} ({movie.releaseDate.getFullYear()})
       </h2>
@@ -151,8 +152,22 @@ export default function MovieDetails() {
         ) : null}
       </div>
       {movie.summary ? (
-        <div style={{ marginTop: "1rem" }}>
-          <h3>Summary</h3>
+        <div
+          style={{
+            margin: "auto",
+            marginTop: "30px",
+            width: "90%",
+          }}
+        >
+          <h3
+            style={{
+              fontFamily: "Titillium-Web",
+              fontSize: "2rem",
+              textDecoration: "underline #f2f4",
+            }}
+          >
+            Summary
+          </h3>
           <div style={{ padding: " 0px 50px" }}>
             <ReactMarkdown>{movie.summary}</ReactMarkdown>
           </div>
@@ -160,7 +175,15 @@ export default function MovieDetails() {
       ) : null}
       {movie.actors && movie.actors.length > 0 ? (
         <div style={{ marginTop: "1rem" }}>
-          <h3>Actors</h3>
+          <h3
+            style={{
+              fontFamily: "Titillium-Web",
+              fontSize: "2rem",
+              textDecoration: "underline #f2f4",
+            }}
+          >
+            Actors
+          </h3>
           <div className={cssStyles["actor-card-container"]}>
             {movie.actors?.map((actor) => (
               <div
@@ -215,12 +238,28 @@ export default function MovieDetails() {
       ) : null}
       {movie.movieTheaters && movie.movieTheaters.length > 0 ? (
         <div>
-          <h2>Showing on</h2>
+          <h2
+            style={{
+              fontFamily: "Titillium-Web",
+              fontSize: "2.2rem",
+              textDecoration: "underline dashed #f2f4",
+              marginTop: "20px",
+            }}
+          >
+            Showing on
+          </h2>
           <ol style={{ display: "flex", justifyContent: "space-evenly" }}>
             {movie &&
               movie.movieTheaters?.map((theaters, id) => (
-                <li key={id}>
-                  <h6>{theaters.name}</h6>
+                <li
+                  key={id}
+                  style={{
+                    margin: "10px",
+                  }}
+                >
+                  <h6 style={{ fontFamily: "monospace", fontSize: "1rem" }}>
+                    {theaters.name}
+                  </h6>
                 </li>
               ))}
           </ol>

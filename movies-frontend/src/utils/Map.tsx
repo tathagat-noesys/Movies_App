@@ -40,7 +40,11 @@ const Map = (props: mapProps) => {
         center={[12.97779, 77.564936]}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ height: `${props.height}` }}
+        style={{
+          height: `${props.height}`,
+          border: "8px solid black",
+          borderRadius: "5px",
+        }}
       >
         <TileLayer
           attribution="React Movies"

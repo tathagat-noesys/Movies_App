@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { Field, Form, Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
@@ -26,7 +26,7 @@ export default function FilterMovies() {
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
   const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
-
+  const selectRef = useRef(null);
   useEffect(() => {
     axios
       .get(`${URLgenres}?Page=1&RecordsPerPage=50`)
@@ -114,6 +114,7 @@ export default function FilterMovies() {
                     id="title"
                     placeholder="Title of the movie"
                     {...formikProps.getFieldProps("title")}
+                    ref={selectRef}
                   />
                 </div>
                 <div className="col-auto">
@@ -134,7 +135,7 @@ export default function FilterMovies() {
                           )}`
                         )
                         .then((res) => {
-                          console.log("Res", res);
+                          // console.log("Res", res);
                           setMovies(res.data);
                         })
                         .catch((err) => {
@@ -158,6 +159,23 @@ export default function FilterMovies() {
                       id="upcomingReleases"
                       name="upcomingReleases"
                       type="checkbox"
+                      onClick={(event) => {
+                        console.log(selectRef);
+                        axios
+                          .get(
+                            `${URLmovies}/movie-genre-inTheater?inTheater=${
+                              event.target.checked ? false : true
+                            }`
+                          )
+                          .then((res) => {
+                            console.log("Res", res);
+                            setMovies(res.data);
+                          })
+                          .catch((err) => {
+                            setMovies([]);
+                            console.log(err);
+                          });
+                      }}
                     />
                     <label
                       className="form-check-label"
@@ -174,6 +192,31 @@ export default function FilterMovies() {
                       id="inTheaters"
                       name="inTheaters"
                       type="checkbox"
+                      onClick={(event) => {
+                        console.log(
+                          event.target.value,
+                          `${URLmovies}/movie-genre-inTheater?inTheater=${true}`
+                        );
+
+                        if (event.target.checked) {
+                          axios
+                            .get(
+                              `${URLmovies}/movie-genre-inTheater?inTheater=${
+                                event.target.checked ? true : false
+                              }`
+                            )
+                            .then((res) => {
+                              console.log("Res", res);
+                              setMovies(res.data);
+                            })
+                            .catch((err) => {
+                              setMovies([]);
+                              console.log(err);
+                            });
+                        } else {
+                          setMovies([]);
+                        }
+                      }}
                     />
                     <label className="form-check-label" htmlFor="inTheaters">
                       In Theaters

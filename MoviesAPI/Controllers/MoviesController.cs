@@ -87,7 +87,7 @@ namespace MoviesAPI.Controllers
         public async Task<ActionResult<List<MovieDTO>>> Filter([FromQuery] FilterMoviesDTO filterMoviesDTO)
         {
             var moviesQueryable = context.Movies.AsQueryable();
-
+            filterMoviesDTO.Title = filterMoviesDTO.Title.ToLower();
             if (!string.IsNullOrEmpty(filterMoviesDTO.Title))
             {
                 moviesQueryable = moviesQueryable.Where(x => x.Title.Contains(filterMoviesDTO.Title));
@@ -217,7 +217,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("movie-genre")]
-        public async Task<ActionResult<List<MovieDTO>>> GetGenId([FromQuery] int genreId)
+        public async Task<ActionResult<List<MovieDTO>>> GetGenId([FromQuery] int genreId, Boolean inTheater)
         {
             var moviesQueryable = context.Movies.AsQueryable();
 
@@ -226,7 +226,6 @@ namespace MoviesAPI.Controllers
                 moviesQueryable = moviesQueryable
                     .Where(x => x.MoviesGenres.Any(mg => mg.GenreId == genreId));
             }
-
             var movies = await moviesQueryable.ToListAsync();
 
             if (movies == null || movies.Count == 0)
@@ -238,7 +237,49 @@ namespace MoviesAPI.Controllers
             return dtos;
         }
 
+        [HttpGet("movie-genre-inTheater")]
+        public async Task<ActionResult<List<MovieDTO>>> GetInTheater([FromQuery] int genreId, Boolean inTheater)
+        {
+            var moviesQueryable = context.Movies.AsQueryable();
 
+            if (genreId != 0)
+            {
+                moviesQueryable = moviesQueryable
+                    .Where(x => x.MoviesGenres.Any(mg => mg.GenreId == genreId));
+            }
+
+
+
+            if (inTheater != null)
+            {
+                if (inTheater == true)
+                {
+
+                    moviesQueryable = moviesQueryable
+                        .Where(x => x.InTheaters);
+                }
+
+                else if (inTheater == false)
+                {
+                    // Filter movies that are upcoming.
+                    moviesQueryable = moviesQueryable
+                        .Where(x => !x.InTheaters);
+                }
+            }
+
+
+
+
+            var movies = await moviesQueryable.ToListAsync();
+
+            if (movies == null || movies.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var dtos = mapper.Map<List<MovieDTO>>(movies);
+            return dtos;
+        }
 
     }
 }

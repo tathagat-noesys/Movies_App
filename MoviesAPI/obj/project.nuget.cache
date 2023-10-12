@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JyS7FEH4HwUlHFocd9cxhgErybgbecxGtvMaQ0OrpIA/5eWrrq/QQtM1Ou2mPVwotn6G8++ohP9kgEMh9uWUOA==",
+  "dgSpecHash": "3avRHahD1SGwtaLs+qqXyKfZC1y8AeH0VqR3av15HsGhqzKy1DHhbkgYK210sX9nwdbIek0eyFEMQdwC+4fWLw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tathagat\\React_Asp.net_Learning\\Movies_App\\MoviesAPI\\MoviesAPI.csproj",
   "expectedPackageFiles": [
@@ -69,11 +69,7 @@
     "C:\\Users\\Tathagat\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Tathagat\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512",
     "C:\\Users\\Tathagat\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
-    "C:\\Users\\Tathagat\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\Tathagat\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\Tathagat\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\Tathagat\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\Tathagat\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+    "C:\\Users\\Tathagat\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }
