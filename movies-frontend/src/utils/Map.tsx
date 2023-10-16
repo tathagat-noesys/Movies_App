@@ -40,18 +40,24 @@ const Map = (props: mapProps) => {
         center={[12.97779, 77.564936]}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ height: `${props.height}` }}
+        style={{
+          height: `${props.height}`,
+          border: "8px solid black",
+          borderRadius: "5px",
+        }}
       >
         <TileLayer
           attribution="React Movies"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapClick
-          setCoordinates={(coordinates) => {
-            setCoordinatesState([coordinates]);
-            props.handleMapClick(coordinates);
-          }}
-        />
+        {props.readOnly ? null : (
+          <MapClick
+            setCoordinates={(coordinates) => {
+              setCoordinatesState([coordinates]);
+              props.handleMapClick(coordinates);
+            }}
+          />
+        )}
         {coordinatesState.map((points) => (
           <Marker
             key={`${points.lat} + ${points.lng}`}
@@ -69,7 +75,9 @@ interface mapProps {
   height: string;
   coordinates: coordinatesDTO[];
   handleMapClick(coordinates: coordinatesDTO): void;
+  readOnly: boolean;
 }
 Map.defaultProps = {
   height: "300px",
+  readOnly: false,
 };

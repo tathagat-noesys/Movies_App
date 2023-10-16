@@ -6,18 +6,22 @@ const MarkdownField = (props: MarkdownFieldProps) => {
 
   return (
     <div className={`mb-3 form-markdown`}>
-      <label htmlFor={props.field}>{props.displayName}</label>
       <div>
-        <Field
-          id={props.field}
-          name={props.field}
-          as="textarea"
-          className={`form-textarea`}
-        />
+        <label className="markdown-label" htmlFor={props.field}>
+          {props.displayName}
+        </label>
+        <div>
+          <Field
+            id={props.field}
+            name={props.field}
+            as="textarea"
+            className={`form-textarea`}
+          />
+        </div>
       </div>
       <div>
+        <label>{props.displayName} (Preview) :</label>
         <div className={`markdown-container`}>
-          <label>{props.displayName} (Preview) :</label>
           <ReactMarkdown>{values[props.field]}</ReactMarkdown>
         </div>
       </div>

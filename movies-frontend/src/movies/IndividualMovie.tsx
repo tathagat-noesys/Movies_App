@@ -1,16 +1,27 @@
 import { moviesDTO } from "./movies.model";
 import css from "./IndividualMovie.model.css";
-const IndividualMovie = ({ id, title, poster }: moviesDTO) => {
-  const buildLink = () => `/movie/${id}`;
-  return (
-    <div key={id} className={css.main} id="main">
-      <a href={buildLink()}>
-        <img src={poster}></img>
-      </a>
+import { Link } from "react-router-dom";
+import "@fontsource/roboto";
 
-      <p>
-        <a href={buildLink()}>{title}</a>
-      </p>
+const IndividualMovie = ({ id, title, poster, releaseDate }: moviesDTO) => {
+  const buildLink = () => `/movies/${id}`;
+  return (
+    <div key={id} className={css["main-container"]} id="main">
+      <Link to={buildLink()}>
+        <img src={poster}></img>
+      </Link>
+
+      <div
+        style={{
+          fontFamily: "Roboto",
+          marginTop: "1%",
+        }}
+      >
+        <Link to={buildLink()}>
+          <b>{title}</b>
+          <p>{new Date(releaseDate).toUTCString().substring(0, 17)}</p>
+        </Link>
+      </div>
     </div>
   );
 };

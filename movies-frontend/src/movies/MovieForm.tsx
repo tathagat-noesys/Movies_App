@@ -16,6 +16,7 @@ import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../MovieTheaters/movietheater.model";
 import TypeAheadActors from "./../forms/TypeAheadActors";
 import { actorMovieDTO } from "../actors/actorsmodel";
+import MarkdownField from "../forms/MarkdownField";
 
 const MovieForm = (props: movieFormProps) => {
   const MapToModel = (
@@ -73,6 +74,8 @@ const MovieForm = (props: movieFormProps) => {
               field="poster"
               imageUrl={props.model.posterUrl}
             />
+
+            <MarkdownField displayName="Summary" field="summary" />
             <MultipleSelector
               displayName="Genres"
               nonSelected={nonSelectedGenresState}

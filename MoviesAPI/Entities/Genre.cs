@@ -13,7 +13,7 @@ namespace MoviesAPI.Entities
         public int Id { get; set; }
         [Required(ErrorMessage ="{0} field is required for the request")]
         [FirstLetterUppercase]
-        [StringLength(15)]
+        [StringLength(50)]
         public string Name { get; set; }
     }
 }

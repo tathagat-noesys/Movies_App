@@ -21,6 +21,7 @@ const GenreForm = (props: genreFormProps) => {
         validationSchema={Yup.object({
           name: Yup.string()
             .required("* This field is required")
+            .max(50, "The name of the genre cannot be more than 50 characters")
             .FirstLetterUppercase(),
         })}
       >

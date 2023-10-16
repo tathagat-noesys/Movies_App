@@ -1,83 +1,110 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MoviesAPI.Entities;
-using MoviesAPI.Services;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MoviesAPI.Filters;
+using Microsoft.EntityFrameworkCore;
+using MoviesAPI.DTOs;
+using AutoMapper;
+using MoviesAPI.Helpers;
 
 namespace MoviesAPI.Controllers
 {
-	[Route("/genres")]
+    [Route("/genres")]
     [ApiController]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class GenreController : ControllerBase{
+    public class GenreController : ControllerBase
+    {
 
 
-        private readonly IRepository repository;
+
 
         private readonly ILogger<GenreController> logger;
+        private readonly ApplicationDbContext context;
+        private readonly IMapper mapper;
 
-        public GenreController(IRepository repository,ILogger<GenreController> logger)
+        public GenreController(ILogger<GenreController> logger,ApplicationDbContext context,IMapper mapper)
         {
-	        this.repository = repository;
+
             this.logger = logger;
-	    }
+            this.context = context;
+            this.mapper = mapper;
+        }
 
 
         [HttpGet] //api/genres
-        [HttpGet("list")]
+        // [HttpGet("list")]
         //[ResponseCache(Duration=50)]
-        [ServiceFilter(typeof(MyActionFilter))]
-        public async  Task<ActionResult<List<Genre>>> Get()
+        // [ServiceFilter(typeof(MyActionFilter))]
+        public async Task<ActionResult<List<GenreDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
+            //logger to console
             logger.LogInformation("Getting all genres");
-            return await repository.GetAllGenres();
+
+
+            //Pagination
+            var queryable = context.Genres.AsQueryable();
+            await HttpContext.InsertParametersPaginationInHeader(queryable);
+            var genres = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
+            return mapper.Map<List<GenreDTO>>(genres);
+         
+
+            return mapper.Map<List<GenreDTO>>(genres);
+
         }
 
 
         [HttpGet("{Id:int}")]
-        public IActionResult  GetGenreById(int Id, [BindRequired] string params2)
+        public async Task<ActionResult<GenreDTO>> GetGenreById([BindRequired] int Id)
 
-            
+
         {
 
-          
-            var genre =  repository.GetGenreById(Id);
 
-            if(genre == null) {
+            var genre = await context.Genres.FirstOrDefaultAsync(x=>x.Id==Id);
 
-                logger.LogWarning($"Genre with Id {Id} not found");
-                //throw new ApplicationException();
-                return NotFound();
-            }
-            return Ok(genre);
+            if (genre == null) { return NotFound(); }
+
+            return mapper.Map<GenreDTO>(genre);
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Genre genre)
+        public async Task<ActionResult> Post([FromBody] GenreCreationDTO genreCreationDTO)
         {
-            
-
-           repository.AddGenre(genre);
-
+            var genre = mapper.Map<Genre>(genreCreationDTO);
+            context.Genres.Add(genre);
+            await context.SaveChangesAsync();
             return NoContent();
         }
 
-        [HttpPut]
-        public ActionResult Put([FromBody]Genre genre)
+        [HttpPut("{Id:int}")]
+        public async Task<ActionResult> Put(int Id,[FromBody] GenreCreationDTO genreCreationDTO)
         {
-          
-            return NoContent(); }
 
-        [HttpDelete]
-        public ActionResult Delete()
+            var genre = await context.Genres.FirstOrDefaultAsync(x =>x.Id==Id);
+            if (genre == null) { return NotFound(); }
+            genre = mapper.Map(genreCreationDTO, genre);
+            await context.SaveChangesAsync();
+            return NoContent();
+
+        }
+
+        [HttpDelete("{Id:int}")]
+        public async Task<ActionResult> Delete(int Id)
         {
-           
-            return NoContent(); }
 
+           var exists = await context.Genres.AnyAsync(x => x.Id==Id);
+
+            if (!exists) { return NotFound(); }
+            context.Remove(new Genre(){ Id=Id});
+            await context.SaveChangesAsync();
+            return NoContent();
+
+        }
     }
 }
